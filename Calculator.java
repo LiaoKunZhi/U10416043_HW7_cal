@@ -10,6 +10,11 @@ import javafx.stage.Stage;
 
 //Class
 public class Calculator extends Application {
+    
+        //Data field
+	double a = 0;
+	int n;
+	int m;
         
         //Method
 	public void start (Stage primaryStage) {
@@ -155,5 +160,201 @@ public class Calculator extends Application {
         pane.getChildren().addAll(plus, subtract, multiply, divide, end);
         pane.getChildren().addAll(dot, sqrt, percent, change);
         pane.getChildren().addAll(C, CE, DEL);
+        
+        //Let the buttons can be used
+	one.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("1");
+                }
+                else {
+			textfield.setText(textfield.getText() + "1");
+                }
+	});
+        
+	two.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("2");
+                }
+                else {
+			textfield.setText(textfield.getText() + "2");
+                }
+	});
+        
+	three.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("3");
+                }
+                else {
+			textfield.setText(textfield.getText() + "3");
+                }
+	});
+        
+	four.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("4");
+                }
+                else {
+			textfield.setText(textfield.getText() + "4");
+                }
+	});
+        
+	five.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("5");
+                }
+                else {
+			textfield.setText(textfield.getText() + "5");
+                }
+	});
+        
+	six.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("6");
+                }
+                else {
+			textfield.setText(textfield.getText() + "6");
+                }
+	});
+        
+	seven.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("7");
+                }
+                else {
+			textfield.setText(textfield.getText() + "7");
+                }
+	});
+        
+	eight.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("8");
+                }
+                else {
+			textfield.setText(textfield.getText() + "8");
+                }
+	});
+        
+	nine.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("9");
+                }
+                else {
+			textfield.setText(textfield.getText() + "9");
+                }
+	});
+        
+	zero.setOnAction (e -> {
+		if (textfield.getText().length() == 1 && textfield.getText().charAt(0) == 48) {
+			textfield.setText("0");
+                }
+                else {
+			textfield.setText(textfield.getText() + "0");
+                }
+	});
+        
+	CE.setOnAction (e -> {
+		textfield.setText("0");
+		a = 0;
+		n = 0;
+	});
+        
+	C.setOnAction (e -> {
+		textfield.setText("0");
+		a = 0;
+		n =0;
+	});
+	
+	plus.setOnAction (e -> {
+		a = Double.parseDouble(textfield.getText());
+		textfield.setText(Integer.toString(0));
+		m = 1;
+		
+	});
+        
+	subtract.setOnAction (e -> {
+		a = Double.parseDouble(textfield.getText());
+		textfield.setText(Integer.toString(0));
+		m = 2;
+		
+	});
+        
+	multiply.setOnAction (e -> {
+		a = Double.parseDouble(textfield.getText());
+		textfield.setText(Integer.toString(0));
+                m = 3;
+	});
+        
+	divide.setOnAction (e -> {
+		a = Double.parseDouble(textfield.getText());
+		textfield.setText(Integer.toString(0));
+                m = 4;
+	});
+        
+	percent.setOnAction (e -> {
+		a = Double.parseDouble(textfield.getText()) / 100;
+		textfield.setText(String.valueOf(a));
+	});
+        
+	change.setOnAction (e -> {
+		a = -Double.parseDouble(textfield.getText());
+		textfield.setText(String.valueOf(a));
+	});
+        
+	sqrt.setOnAction (e -> {
+		a = Math.sqrt(Double.parseDouble(textfield.getText()));
+		textfield.setText(String.valueOf(a));
+	});
+        
+	DEL.setOnAction (e -> {
+		textfield.setText(textfield.getText().substring(0,textfield.getText().length() - 1));
+		if (textfield.getText().length() == 0) {
+			textfield.setText(Integer.toString(0));
+		}
+	});
+        
+	dot.setOnAction (e -> {
+		if (textfield.getText().indexOf(".") < 0) {
+			textfield.setText(new String(textfield.getText() + "."));
+                }
+	});
+        
+	end.setOnAction (e -> {
+		n = Integer.parseInt(textfield.getText());
+                
+		switch(m) {
+                    case 1:
+			a += n;
+			break;
+                        
+                    case 2:
+			a -= n;
+			break;
+                        
+                    case 3:
+			a *=n;
+			break;
+                        
+                    case 4:
+			a /=n;
+			break;
+                        
+                    default :
+			break;
+		}
+		
+		textfield.setText(String.valueOf(a));
+	});
+
+	//Add the pane in the scene
+	Scene scene = new Scene(pane);
+
+	//Make the title of the stage
+	primaryStage.setTitle(" U10416043   廖崑智 ");
+
+	//Add scene in the stage
+	primaryStage.setScene(scene);
+
+	//Show the stage
+	primaryStage.show();
 	}
 }
